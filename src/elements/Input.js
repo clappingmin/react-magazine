@@ -2,13 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 function Input(props) {
-  const { placeholder } = props;
+  const { placeholder, _onChange, type } = props;
 
   Input.defaultProps = {
     placeholder: '',
+    type: 'text',
+    _onChange: () => {},
   };
 
-  return <InputBox placeholder={placeholder} />;
+  return (
+    <InputBox placeholder={placeholder} type={type} onChange={_onChange} />
+  );
 }
 
 const InputBox = styled.input`

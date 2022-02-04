@@ -47,7 +47,7 @@ Grid.defaultProps = {
 const GridBox = styled.div`
   height: ${(props) => props.height};
   box-sizing: border-box;
-  width: ${(props) => props.width};
+  max-width: ${(props) => props.width};
   ${(props) => (props.min_width ? `min-width: ${props.min_width}` : '')};
   ${(props) => (props.padding ? `padding: ${props.padding};` : '')};
   ${(props) => (props.margin ? `margin: ${props.margin};` : '')};

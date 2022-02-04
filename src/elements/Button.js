@@ -2,15 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 
 function Button(props) {
-  const { size, text, bg } = props;
+  const { size, text, bg, _onClick } = props;
 
-  return <Btn {...props}>{text}</Btn>;
+  const styles = {
+    size,
+    text,
+    bg,
+  };
+
+  return (
+    <Btn {...styles} onClick={_onClick}>
+      {text}
+    </Btn>
+  );
 }
 
 Button.defaultProps = {
   size: '100%',
   text: '버튼',
   bg: 'rgb(246,200,73)',
+  _onClick: () => {},
 };
 
 const Btn = styled.button`

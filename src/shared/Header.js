@@ -12,6 +12,7 @@ function Header(props) {
         <Grid
           is_flex
           width="100vw"
+          min_width="100vw"
           padding="10px"
           bg="#fff"
           border="1px solid rgb(219,219,219)"
@@ -20,7 +21,7 @@ function Header(props) {
             <Image shape="circle" src="img/logo2.png" width="100px" />
           </Link>
 
-          <Grid is_flex width="225px" margin="0 20px">
+          <Grid is_flex min_width="225px" margin="0 20px">
             <Link to="#">
               <Button text="내 정보" size="70px" />
             </Link>
@@ -40,6 +41,7 @@ function Header(props) {
         <Grid
           is_flex
           width="100vw"
+          min_width="100vw"
           padding="10px"
           bg="#fff"
           border="1px solid rgb(219,219,219)"
@@ -47,7 +49,7 @@ function Header(props) {
           <Link to="/">
             <Image shape="circle" src="img/logo2.png" width="100px" />
           </Link>
-          <Grid is_flex width="150px" margin="0 20px">
+          <Grid is_flex min_width="150px" margin="0 20px">
             <Link to="/signup">
               <Button text="회원가입" size="70px" />
             </Link>
