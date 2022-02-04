@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../shared/Header';
+import Header from '../components/Header';
 import { Grid, Text, Input, Button } from '../elements';
 import { deleteCookie, setCookie } from '../shared/Cookie';
 
@@ -36,20 +36,20 @@ function Login() {
           </Text>
           <Input
             value={id}
-            onChange={changeId}
+            _onChange={changeId}
             placeholder="아이디를 입력하세요"
           />
           <Input
             value={pwd}
-            onChange={changePwd}
+            _onChange={changePwd}
             type="password"
             placeholder="비밀번호를 입력하세요"
           />
           <Button
             text="로그인"
             _onClick={() => {
+              console.log('로그인 했어~');
               login();
-              console.log('버튼이 눌렸다.');
             }}
           />
         </Grid>
