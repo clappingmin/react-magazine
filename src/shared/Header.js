@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Image, Button } from '../elements';
+import styled from 'styled-components';
 
 function Header(props) {
   const { is_Login } = props;
 
   if (is_Login)
     return (
-      <React.Fragment>
+      <HeaderBox>
         <Grid
           is_flex
           width="100vw"
@@ -31,11 +32,11 @@ function Header(props) {
             </Link>
           </Grid>
         </Grid>
-      </React.Fragment>
+      </HeaderBox>
     );
   else
     return (
-      <React.Fragment>
+      <HeaderBox>
         <Grid
           is_flex
           width="100vw"
@@ -55,7 +56,14 @@ function Header(props) {
             </Link>
           </Grid>
         </Grid>
-      </React.Fragment>
+      </HeaderBox>
     );
 }
+
+const HeaderBox = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+`;
 export default Header;

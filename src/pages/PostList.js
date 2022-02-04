@@ -8,7 +8,9 @@ function PostList(props) {
     <React.Fragment>
       <Grid bg="rgb(250, 250, 250)">
         <Header is_Login />
-        <Post />
+        <Grid padding={'100px 0'}>
+          <Post />
+        </Grid>
       </Grid>
     </React.Fragment>
   );

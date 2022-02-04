@@ -8,7 +8,9 @@ function Signup() {
     <React.Fragment>
       <Grid bg="rgb(250, 250, 250)" height="100vh">
         <Header />
-        <SignupForm />
+        <Grid padding={'50px 0'}>
+          <SignupForm />
+        </Grid>
       </Grid>
     </React.Fragment>
   );
