@@ -110,8 +110,8 @@ const addPostFB = (contents = '') => {
     };
 
     const _image = getState().image.preview;
-    console.log(_image);
-    console.log(typeof _image);
+    // console.log(_image);
+    // console.log(typeof _image);
 
     const _upload = storage
       .ref(`images/${user_info.user_id}_${new Date().getTime()}`)
