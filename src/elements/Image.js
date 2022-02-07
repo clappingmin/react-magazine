@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 
 const Image = (props) => {
-  const { shape, src, width, height } = props;
+  const { shape, src, width, height, _onClick } = props;
 
   const styles = {
     src: src,
@@ -11,13 +11,13 @@ const Image = (props) => {
   };
 
   if (shape === 'circle') {
-    return <ImageCircle {...styles}></ImageCircle>;
+    return <ImageCircle {...styles} onClick={_onClick}></ImageCircle>;
   }
 
   if (shape === 'rectangle') {
     return (
       <AspectOutter>
-        <AspectInner {...styles}></AspectInner>
+        <AspectInner {...styles} onClick={_onClick}></AspectInner>
       </AspectOutter>
     );
   }
@@ -30,6 +30,7 @@ Image.defaultProps = {
   src: 'http://storage.enuri.info/pic_upload/knowbox2/201909/0920148702019092563a27187-c035-40ef-9d20-10bbb9c08e1f.jpeg',
   height: '35px',
   width: '35px',
+  _onClick: null,
 };
 
 const AspectOutter = styled.div`

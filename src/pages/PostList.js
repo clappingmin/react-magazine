@@ -26,7 +26,7 @@ function PostList(props) {
               key={p.id}
               width="940px"
               min_width="485px"
-              margin="auto"
+              margin=" 0 auto 40px"
               bg="#fff"
               border="1px solid rgb(219,219,219)"
               padding="20px"

@@ -29,7 +29,14 @@ const Header = React.memo((props) => {
           bg="#fff"
           border="1px solid rgb(219,219,219)"
         >
-          <Image shape="circle" src="img/logo2.png" width="100px" />
+          <Image
+            shape="circle"
+            src="img/logo2.png"
+            width="100px"
+            _onClick={() => {
+              history.push('/');
+            }}
+          />
 
           <Grid is_flex min_width="225px" margin="0 20px">
             <Button width="70px">내 정보</Button>
@@ -57,7 +64,14 @@ const Header = React.memo((props) => {
           bg="#fff"
           border="1px solid rgb(219,219,219)"
         >
-          <Image shape="circle" src="img/logo2.png" width="100px" />
+          <Image
+            shape="circle"
+            src="img/logo2.png"
+            width="100px"
+            _onClick={() => {
+              history.push('/');
+            }}
+          />
           <Grid is_flex min_width="150px" margin="0 20px">
             <Button
               width="70px"

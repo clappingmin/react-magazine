@@ -16,6 +16,7 @@ const Grid = (props) => {
     border,
     bottom,
     right,
+    center,
   } = props;
 
   const styles = {
@@ -31,6 +32,7 @@ const Grid = (props) => {
     is_fixed,
     bottom,
     right,
+    center,
   };
 
   return (
@@ -54,6 +56,7 @@ Grid.defaultProps = {
   bottom: 0,
   right: 0,
   min_height: null,
+  center: false,
 };
 
 const GridBox = styled.div`
@@ -78,6 +81,7 @@ const GridBox = styled.div`
     props.is_fixed
       ? `  position: fixed; bottom: ${props.bottom}; right: ${props.right};`
       : ''}
+  ${(props) => (props.center ? `text-align: center;` : '')}
 `;
 
 export default Grid;
