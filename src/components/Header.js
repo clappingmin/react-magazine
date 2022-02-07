@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Image, Button } from '../elements';
 import styled from 'styled-components';
 import { getCookie, deleteCookie } from '../shared/Cookie';
@@ -6,11 +6,20 @@ import { getCookie, deleteCookie } from '../shared/Cookie';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators as userActions } from '../redux/modules/user';
 
-function Header(props) {
+import { history } from '../redux/configureStore';
+
+// 로그인 유지 세션 확인
+import { apiKey } from '../shared/firebase';
+
+const Header = React.memo((props) => {
   const dispatch = useDispatch();
   const is_login = useSelector((state) => state.user.is_login);
 
-  if (is_login) {
+  // 세션 확인
+  const _session_key = `firebase:authUser:${apiKey}:[DEFAULT]`;
+  const is_session = sessionStorage.getItem(_session_key) ? true : false;
+
+  if (is_login && is_session) {
     return (
       <HeaderBox>
         <Grid
@@ -24,15 +33,16 @@ function Header(props) {
           <Image shape="circle" src="img/logo2.png" width="100px" />
 
           <Grid is_flex min_width="225px" margin="0 20px">
-            <Button text="내 정보" size="70px" />
-            <Button text="알림" size="70px" />
+            <Button width="70px">내 정보</Button>
+            <Button width="70px">알림</Button>
             <Button
-              text="로그아웃"
-              size="70px"
+              width="70px"
               _onClick={() => {
-                dispatch(userActions.logOut({}));
+                dispatch(userActions.logoutFB());
               }}
-            />
+            >
+              로그아웃
+            </Button>
           </Grid>
         </Grid>
       </HeaderBox>
@@ -50,14 +60,28 @@ function Header(props) {
         >
           <Image shape="circle" src="img/logo2.png" width="100px" />
           <Grid is_flex min_width="150px" margin="0 20px">
-            <Button text="회원가입" size="70px" />
-            <Button text="로그인" size="70px" />
+            <Button
+              width="70px"
+              _onClick={() => {
+                history.push('/login');
+              }}
+            >
+              로그인
+            </Button>
+            <Button
+              width="70px"
+              _onClick={() => {
+                history.push('/signup');
+              }}
+            >
+              회원가입
+            </Button>
           </Grid>
         </Grid>
       </HeaderBox>
     );
   }
-}
+});
 
 const HeaderBox = styled.div`
   position: fixed;

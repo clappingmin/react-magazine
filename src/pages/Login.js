@@ -30,8 +30,7 @@ function Login(props) {
 
   return (
     <React.Fragment>
-      <Grid bg="rgb(250, 250, 250)" height="100vh">
-        <Header />
+      <Grid height="100vh" is_fixed min_width="100vw" bg="rgb(250,250,250)">
         <Grid
           border="1px solid rgb(219, 219, 219)"
           width="485px"
@@ -54,12 +53,13 @@ function Login(props) {
             placeholder="비밀번호를 입력하세요"
           />
           <Button
-            text="로그인"
             _onClick={() => {
               console.log('로그인 했어~');
               login();
             }}
-          />
+          >
+            로그인
+          </Button>
         </Grid>
       </Grid>
     </React.Fragment>

@@ -28,8 +28,7 @@ function Signup(props) {
 
   return (
     <React.Fragment>
-      <Grid bg="rgb(250, 250, 250)" height="100vh">
-        <Header />
+      <Grid height="100vh" is_fixed min_width="100vw" bg="rgb(250,250,250)">
         <Grid
           border="1px solid rgb(219, 219, 219)"
           width="485px"
@@ -66,7 +65,7 @@ function Signup(props) {
               setPwdCheck(e.target.value);
             }}
           />
-          <Button text="회원가입" _onClick={signup} />
+          <Button _onClick={signup}>회원가입</Button>
         </Grid>
       </Grid>
     </React.Fragment>

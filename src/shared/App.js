@@ -10,11 +10,27 @@ import PostList from '../pages/PostList';
 import { Grid } from '../elements';
 import Header from '../components/Header';
 
+import { useDispatch } from 'react-redux';
+import { actionCreators as userActions } from '../redux/modules/user';
+
+import { apiKey } from './firebase';
+
 function App() {
+  const dispatch = useDispatch();
+
+  const _session_key = `firebase:authUser:${apiKey}:[DEFAULT]`;
+  const is_session = sessionStorage.getItem(_session_key) ? true : false;
+
+  React.useEffect(() => {
+    if (is_session) {
+      dispatch(userActions.loginCheckFB());
+    }
+  }, []);
+
   return (
     <React.Fragment>
-      <Grid>
-        <Header></Header>
+      <Grid bg="rgb(250,250,250)">
+        <Header />
         <ConnectedRouter history={history}>
           <Route path="/" exact component={PostList} />
           <Route path="/login" exact component={Login} />

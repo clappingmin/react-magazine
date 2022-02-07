@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Grid = (props) => {
   const {
+    is_fixed,
     is_flex,
     width,
     min_width,
@@ -12,6 +13,8 @@ const Grid = (props) => {
     bg,
     children,
     border,
+    bottom,
+    right,
   } = props;
 
   const styles = {
@@ -23,6 +26,9 @@ const Grid = (props) => {
     bg: bg,
     border: border,
     height: height,
+    is_fixed,
+    bottom,
+    right,
   };
 
   return (
@@ -42,6 +48,9 @@ Grid.defaultProps = {
   margin: false,
   bg: false,
   border: null,
+  is_fixed: false,
+  bottom: 0,
+  right: 0,
 };
 
 const GridBox = styled.div`
@@ -58,6 +67,11 @@ const GridBox = styled.div`
       : ''};
   ${(props) => (props.border ? `border: ${props.border};` : '')}
   border-radius: 2px;
+
+  ${(props) =>
+    props.is_fixed
+      ? `  position: fixed; bottom: ${props.bottom}; right: ${props.right};`
+      : ''}
 `;
 
 export default Grid;
