@@ -3,7 +3,11 @@ import Header from '../components/Header';
 import { Grid, Text, Input, Button } from '../elements';
 import { deleteCookie, setCookie } from '../shared/Cookie';
 
-function Login() {
+import { actionCreators as userActions } from '../redux/modules/user'; // as : 별명 주는거
+import { useDispatch } from 'react-redux';
+
+function Login(props) {
+  const dispatch = useDispatch();
   const [id, setId] = React.useState('');
   const [pwd, setPwd] = React.useState('');
 
@@ -16,8 +20,9 @@ function Login() {
   };
 
   const login = () => {
-    setCookie('user_id', id, 3);
-    setCookie('user_pwd', pwd, 3);
+    // setCookie('user_id', id, 3);
+    // setCookie('user_pwd', pwd, 3);
+    dispatch(userActions.loginAction({ user_name: 'sumin' }));
   };
 
   return (

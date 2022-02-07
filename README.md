@@ -1,7 +1,7 @@
 # Image Community
 
 ```bash
-$ yarn add react-router-dom
+$ npm i react-router-dom@5.3.0
 $ yarn add styled-components
 
 # history : 리덕스와 리덕스 모듈 내에서 경로 이동까지 해줌

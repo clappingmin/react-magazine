@@ -3,16 +3,12 @@ import { Grid, Image, Button } from '../elements';
 import styled from 'styled-components';
 import { getCookie, deleteCookie } from '../shared/Cookie';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { actionCreators as userActions } from '../redux/modules/user';
+
 function Header(props) {
-  const [is_login, setIsLogin] = useState(false);
-
-  useEffect(() => {
-    let cookie = getCookie('user_id');
-    console.log('쿠키에 저장된 아이디는 ' + cookie);
-
-    if (cookie) setIsLogin(true);
-    else setIsLogin(false);
-  });
+  const dispatch = useDispatch();
+  const is_login = useSelector((state) => state.user.is_login);
 
   if (is_login) {
     return (
@@ -34,7 +30,7 @@ function Header(props) {
               text="로그아웃"
               size="70px"
               _onClick={() => {
-                deleteCookie('user_id');
+                dispatch(userActions.logOut({}));
               }}
             />
           </Grid>
