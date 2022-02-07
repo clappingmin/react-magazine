@@ -5,27 +5,19 @@ import { Grid, Image, Text } from '../elements';
 const Post = (props) => {
   return (
     <React.Fragment>
-      <Grid
-        width="940px"
-        min_width="485px"
-        margin="auto"
-        bg="#fff"
-        border="1px solid rgb(219,219,219)"
-      >
-        <Grid is_flex>
-          <Image shape="circle" src={props.src} width="35px" height="35px" />
-          <Text bold>{props.user_info.user_name}</Text>
-          <Text>{props.insert_dt}</Text>
-        </Grid>
-        <Grid>
-          <Image shape="rectangle" src={props.src}></Image>
-        </Grid>
-        <Grid padding="16px">
-          <Text>{props.contents}</Text>
-        </Grid>
-        <Grid padding="16px">
-          <Text bold>댓글 {props.comment_cnt}개</Text>
-        </Grid>
+      <Grid is_flex>
+        <Image shape="circle" src={props.src} width="35px" height="35px" />
+        <Text bold>{props.user_info.user_name}</Text>
+        <Text>{props.insert_dt}</Text>
+      </Grid>
+      <Grid>
+        <Image shape="rectangle" src={props.src}></Image>
+      </Grid>
+      <Grid padding="16px">
+        <Text>{props.contents}</Text>
+      </Grid>
+      <Grid padding="16px">
+        <Text bold>댓글 {props.comment_cnt}개</Text>
       </Grid>
     </React.Fragment>
   );

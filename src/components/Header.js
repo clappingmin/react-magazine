@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Grid, Image, Button } from '../elements';
 import styled from 'styled-components';
-import { getCookie, deleteCookie } from '../shared/Cookie';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators as userActions } from '../redux/modules/user';
