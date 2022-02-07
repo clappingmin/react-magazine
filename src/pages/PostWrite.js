@@ -4,15 +4,35 @@ import Upload from '../shared/Upload';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators as postActions } from '../redux/modules/post';
+import { actionCreators as imageActions } from '../redux/modules/image';
 
 const PostWrite = (props) => {
   const dispatch = useDispatch();
   const is_login = useSelector((state) => state.user.is_login);
   const preview = useSelector((state) => state.image.preview);
+  const post_list = useSelector((state) => state.post.list);
+
+  const post_id = props.match.params.id;
+  const is_edit = post_id ? true : false;
 
   const { history } = props;
 
-  const [contents, setContents] = React.useState('');
+  let _post = is_edit ? post_list.find((p) => p.id === post_id) : null;
+
+  const [contents, setContents] = React.useState(_post ? _post.contents : '');
+
+  React.useEffect(() => {
+    if (is_edit && !_post) {
+      console.log('포스트 정보가 없어요!');
+      history.goBack();
+
+      return;
+    }
+
+    if (is_edit) {
+      dispatch(imageActions.setPreview(_post.image_url));
+    }
+  }, []);
 
   const changeContents = (e) => {
     setContents(e.target.value);
@@ -20,7 +40,10 @@ const PostWrite = (props) => {
 
   const addPost = () => {
     dispatch(postActions.addPostFB(contents));
-    history.push('/');
+  };
+
+  const editPost = () => {
+    dispatch(postActions.editPostFB(post_id, { contents: contents }));
   };
 
   if (!is_login) {
@@ -60,9 +83,15 @@ const PostWrite = (props) => {
           border="1px solid rgb(219,219,219)"
           padding="20px"
         >
-          <Text bold font="Hardworking" size="60px" is_center>
-            게시글 작성
-          </Text>
+          {is_edit ? (
+            <Text bold font="Hardworking" size="60px" is_center>
+              게시글 수정
+            </Text>
+          ) : (
+            <Text bold font="Hardworking" size="60px" is_center>
+              게시글 작성
+            </Text>
+          )}
           <Upload />
 
           <Grid margin="10px 0">
@@ -85,9 +114,15 @@ const PostWrite = (props) => {
           </Grid>
 
           <Grid>
-            <Button height="50px" size="30px" _onClick={addPost}>
-              게시글 작성
-            </Button>
+            {is_edit ? (
+              <Button height="50px" size="30px" _onClick={editPost}>
+                게시글 수정
+              </Button>
+            ) : (
+              <Button height="50px" size="30px" _onClick={addPost}>
+                게시글 작성
+              </Button>
+            )}
           </Grid>
         </Grid>
       </Grid>
