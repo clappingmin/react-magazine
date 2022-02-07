@@ -42,6 +42,7 @@ const loginFB = (id, pwd) => {
           );
 
           history.push('/');
+          alert(`${user.user.displayName}님 환영합니다!`);
         })
         .catch((error) => {
           var errorCode = error.code;

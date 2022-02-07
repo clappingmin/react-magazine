@@ -5,6 +5,7 @@ import { deleteCookie, setCookie } from '../shared/Cookie';
 
 import { actionCreators as userActions } from '../redux/modules/user'; // as : 별명 주는거
 import { useDispatch } from 'react-redux';
+import { emailCheck } from '../shared/common';
 
 function Login(props) {
   const dispatch = useDispatch();
@@ -22,6 +23,11 @@ function Login(props) {
   const login = () => {
     if (id === '' || pwd === '') {
       window.alert('아이디 혹은 비밀번호가 공란입니다! 입력해주세요!');
+      return;
+    }
+
+    if (!emailCheck(id)) {
+      window.alert('이메일 형식이 맞지 않습니다!');
       return;
     }
 

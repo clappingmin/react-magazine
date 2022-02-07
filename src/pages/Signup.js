@@ -4,6 +4,7 @@ import { Grid, Text, Input, Button } from '../elements';
 
 import { useDispatch } from 'react-redux';
 import { actionCreators as userActions } from '../redux/modules/user';
+import { emailCheck } from '../shared/common';
 
 function Signup(props) {
   const dispatch = useDispatch();
@@ -23,6 +24,12 @@ function Signup(props) {
       alert('비밀번호가 비밀번호 확인과 다릅니다. 다시 입력해주세요.');
       return;
     }
+
+    if (!emailCheck(id)) {
+      window.alert('이메일 형식이 맞지 않습니다!');
+      return;
+    }
+
     dispatch(userActions.signupFB(id, pwd, user_name));
   };
 
