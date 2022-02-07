@@ -72,7 +72,6 @@ const signupFB = (id, pwd, user_name) => {
             history.push('/');
           })
           .catch((error) => {
-            // 에러가 나면..
             var errorCode = error.code;
             var errorMessage = error.message;
             console.log(errorCode, errorMessage);

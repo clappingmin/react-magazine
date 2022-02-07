@@ -11,7 +11,7 @@ const Post = (props) => {
         <Text>{props.insert_dt}</Text>
       </Grid>
       <Grid>
-        <Image shape="rectangle" src={props.src}></Image>
+        <Image shape="rectangle" src={props.image_url}></Image>
       </Grid>
       <Grid padding="16px">
         <Text>{props.contents}</Text>

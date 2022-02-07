@@ -6,10 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators as postActions } from '../redux/modules/post';
 
 const PostWrite = (props) => {
+  const dispatch = useDispatch();
   const is_login = useSelector((state) => state.user.is_login);
+  const preview = useSelector((state) => state.image.preview);
+
   const { history } = props;
 
-  const dispatch = useDispatch();
   const [contents, setContents] = React.useState('');
 
   const changeContents = (e) => {
@@ -67,7 +69,10 @@ const PostWrite = (props) => {
             <Text size="20px" bold>
               미리보기
             </Text>
-            <Image shape="rectangle" />
+            <Image
+              shape="rectangle"
+              src={preview ? preview : 'http://via.placeholder.com/400x300'}
+            />
           </Grid>
 
           <Grid margin="30px 0">

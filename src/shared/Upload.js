@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../elements';
 
+import { useDispatch, useSelector } from 'react-redux';
 import { actionCreators as imageActions } from '../redux/modules/image';
 
 const Upload = (props) => {
@@ -18,6 +18,19 @@ const Upload = (props) => {
 
     // ref로도 확인해봅시다. :)
     console.log(fileInput.current.files[0]);
+
+    const reader = new FileReader();
+    const file = fileInput.current.files[0];
+
+    // 파일을 읽어온다
+    reader.readAsDataURL(file);
+
+    // 읽기가 끝나면 발생하는 이벤트 핸들러예요! :)
+    reader.onloadend = () => {
+      // reader.result는 파일의 컨텐츠(내용물)입니다!
+      console.log(reader.result);
+      dispatch(imageActions.setPreview(reader.result));
+    };
   };
 
   const uploadFB = () => {

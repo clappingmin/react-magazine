@@ -6,10 +6,19 @@ import { storage } from '../../shared/firebase';
 // actions
 const UPLOADING = 'UPLOADING';
 const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
+const SET_PREVIEW = 'SET_PREVIEW';
 
 // action creators
 const uploading = createAction(UPLOADING, (uploading) => ({ uploading }));
 const uploadImage = createAction(UPLOAD_IMAGE, (image_url) => ({ image_url }));
+const setPreview = createAction(SET_PREVIEW, (preview) => ({ preview }));
+
+// initial state
+const initialState = {
+  image_url: 'http://via.placeholder.com/400x300',
+  uploading: false,
+  preview: null,
+};
 
 function uploadImageFB(image) {
   return function (dispatch, getState, { history }) {
@@ -35,12 +44,6 @@ function uploadImageFB(image) {
   };
 }
 
-// initial state
-const initialState = {
-  image_url: 'http://via.placeholder.com/400x300',
-  uploading: false,
-};
-
 // reducer
 export default handleActions(
   {
@@ -55,6 +58,11 @@ export default handleActions(
       produce(state, (draft) => {
         draft.uploading = action.payload.uploading;
       }),
+
+    [SET_PREVIEW]: (state, action) =>
+      produce(state, (draft) => {
+        draft.preview = action.payload.preview;
+      }),
   },
   initialState
 );
@@ -62,6 +70,7 @@ export default handleActions(
 const actionCreators = {
   uploadImage,
   uploadImageFB,
+  setPreview,
 };
 
 export { actionCreators };
