@@ -8,6 +8,7 @@ const Grid = (props) => {
     width,
     min_width,
     height,
+    min_height,
     margin,
     padding,
     bg,
@@ -21,6 +22,7 @@ const Grid = (props) => {
     is_flex: is_flex,
     width: width,
     min_width: min_width,
+    min_height,
     margin: margin,
     padding: padding,
     bg: bg,
@@ -51,13 +53,17 @@ Grid.defaultProps = {
   is_fixed: false,
   bottom: 0,
   right: 0,
+  min_height: null,
 };
 
 const GridBox = styled.div`
-  height: ${(props) => props.height};
   box-sizing: border-box;
+
+  height: ${(props) => props.height};
   max-width: ${(props) => props.width};
   ${(props) => (props.min_width ? `min-width: ${props.min_width}` : '')};
+  ${(props) => (props.min_height ? `min-height: ${props.min_height};` : '')}
+
   ${(props) => (props.padding ? `padding: ${props.padding};` : '')};
   ${(props) => (props.margin ? `margin: ${props.margin};` : '')};
   ${(props) => (props.bg ? `background-color: ${props.bg};` : '')};
