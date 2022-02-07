@@ -1,16 +1,21 @@
 import { createAction, handleActions } from 'redux-actions'; // action과 reducer를 편하게 만들어준다.
 import { produce } from 'immer';
+
 import { setCookie, getCookie, deleteCookie } from '../../shared/Cookie';
+
+import { auth } from '../../shared/firebase';
+import firebase from 'firebase/app';
 
 // actions (액션 타입 선언)
 const LOG_IN = 'LOG_IN';
 const LOG_OUT = 'LOG_OUT';
 const GET_USER = 'GET_USER';
+const SET_USER = 'SET_USER';
 
 // action creators (액션 생성자)
-const logIn = createAction(LOG_IN, (user) => ({ user }));
 const logOut = createAction(LOG_OUT, (user) => ({ user }));
 const getUser = createAction(GET_USER, (user) => ({ user }));
+const setUser = createAction(SET_USER, (user) => ({ user }));
 
 //initialState : default값 같은거
 const initialState = {
@@ -19,19 +24,104 @@ const initialState = {
 };
 
 // middleware actions
-const loginAction = (user) => {
+const loginFB = (id, pwd) => {
   return function (dispatch, getState, { history }) {
-    console.log(history);
+    auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then((res) => {
+      auth
+        .signInWithEmailAndPassword(id, pwd)
+        .then((user) => {
+          console.log(user);
 
-    dispatch(logIn(user));
-    history.push('/');
+          dispatch(
+            setUser({
+              user_name: user.user.displayName,
+              id: id,
+              user_profile: '',
+              uid: user.user.uid,
+            })
+          );
+
+          history.push('/');
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+
+          console.log(errorCode, errorMessage);
+        });
+    });
+  };
+};
+
+const signupFB = (id, pwd, user_name) => {
+  return function (dispatch, getState, { history }) {
+    auth
+      .createUserWithEmailAndPassword(id, pwd)
+      .then((user) => {
+        console.log(user);
+
+        auth.currentUser
+          .updateProfile({
+            displayName: user_name,
+          })
+          .then(() => {
+            dispatch(
+              setUser({ user_name: user_name, id: id, user_profile: '' })
+            );
+            history.push('/');
+          })
+          .catch((error) => {
+            // 에러가 나면..
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+          });
+
+        // Signed in
+        // ...
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        console.log(errorCode, errorMessage);
+        // ..
+      });
+  };
+};
+
+const loginCheckFB = () => {
+  return function (dispatch, getState, { history }) {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(
+          setUser({
+            user_name: user.displayName,
+            user_profile: '',
+            id: user.email,
+            uid: user.uid,
+          })
+        );
+      } else {
+        dispatch(logOut());
+      }
+    });
+  };
+};
+
+const logoutFB = () => {
+  return function (dispatch, getState, { history }) {
+    auth.signOut().then(() => {
+      dispatch(logOut());
+      history.replace('/');
+    });
   };
 };
 
 // reducer
 export default handleActions(
   {
-    [LOG_IN]: (state, action) =>
+    [SET_USER]: (state, action) =>
       produce(state, (draft) => {
         setCookie('is_login', 'success');
         draft.user = action.payload.user;
@@ -53,10 +143,12 @@ export default handleActions(
 // export를 해야 컴포넌트가 사용한다.
 // action creator export
 const actionCreators = {
-  logIn,
   logOut,
   getUser,
-  loginAction,
+  signupFB,
+  loginFB,
+  loginCheckFB,
+  logoutFB,
 };
 
 export { actionCreators };

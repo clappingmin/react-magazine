@@ -20,9 +20,12 @@ function Login(props) {
   };
 
   const login = () => {
-    // setCookie('user_id', id, 3);
-    // setCookie('user_pwd', pwd, 3);
-    dispatch(userActions.loginAction({ user_name: 'sumin' }));
+    if (id === '' || pwd === '') {
+      window.alert('아이디 혹은 비밀번호가 공란입니다! 입력해주세요!');
+      return;
+    }
+
+    dispatch(userActions.loginFB(id, pwd));
   };
 
   return (
