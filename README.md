@@ -28,6 +28,8 @@
 5. 게시글 상세 페이지
    - [ ] 게시글 레이아웃에 맞춰 이미지, 텍스트 위치 조절해서 노출
 
+## 초기설정
+
 ```bash
 $ npm i react-router-dom@5.3.0
 $ yarn add styled-components
