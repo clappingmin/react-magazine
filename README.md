@@ -31,7 +31,7 @@
 
 ## 코드 개선 사항
 
-- [ ] onClick 대신 <form onSubmit>을 사용해서 엔터를 해도 버튼이 눌리게 수정
+- [ ] onClick 대신 onSubmit을 사용해서 엔터를 해도 버튼이 눌리게 수정
 
 ## 초기설정
 
