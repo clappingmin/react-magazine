@@ -47,6 +47,9 @@ const loginFB = (id, pwd) => {
           var errorCode = error.code;
           var errorMessage = error.message;
 
+          alert(
+            '등록되지 않은 아이디이거나 아이디 또는 비밀번호를 잘못 입력하였습니다.'
+          );
           console.log(errorCode, errorMessage);
         });
     });
