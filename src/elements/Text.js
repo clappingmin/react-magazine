@@ -3,10 +3,14 @@ import styled from 'styled-components';
 
 const Text = (props) => {
   // children : 들어갈 텍스트 내용
-  const { bold, color, size, children, font, is_center } = props;
+  const { bold, color, size, children, font, is_center, _onClick } = props;
 
   const styles = { bold, color, size, font, is_center };
-  return <P {...styles}>{children}</P>;
+  return (
+    <P {...styles} onClick={_onClick}>
+      {children}
+    </P>
+  );
 };
 
 Text.defaultProps = {
@@ -16,6 +20,7 @@ Text.defaultProps = {
   size: '14px',
   font: null,
   is_center: null,
+  _onClick: null,
 };
 
 const P = styled.p`

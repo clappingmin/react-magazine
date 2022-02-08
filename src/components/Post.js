@@ -14,9 +14,11 @@ const Post = (props) => {
       <Grid is_flex width="1fr">
         <Grid is_flex min_width="15%">
           <Image shape="circle" src={props.src} width="35px" height="35px" />
-          <Text bold>{props.user_info.user_name}</Text>
+          <Text bold font="Cafe24Ohsquareair">
+            {props.user_info.user_name}
+          </Text>
         </Grid>
-        <Grid is_flex min_width="25%">
+        <Grid is_flex min_width="28%">
           {props.is_me && (
             <Button
               width="auto"
@@ -47,19 +49,31 @@ const Post = (props) => {
               삭제
             </Button>
           )}
-          <Text>{props.insert_dt}</Text>
+          <Text bold font="Cafe24Ohsquareair">
+            {props.insert_dt}
+          </Text>
         </Grid>
       </Grid>
 
       {/* 게시한 이미지, 글, 댓글 */}
       <Grid padding="16px">
-        <Text>{props.contents}</Text>
+        <Text bold font="Cafe24Ohsquareair">
+          {props.contents}
+        </Text>
       </Grid>
       <Grid>
-        <Image shape="rectangle" src={props.image_url}></Image>
+        <Image
+          shape="rectangle"
+          src={props.image_url}
+          _onClick={() => {
+            history.push(`/post/${props.id}`);
+          }}
+        ></Image>
       </Grid>
       <Grid padding="16px">
-        <Text bold>댓글 {props.comment_cnt}개</Text>
+        <Text bold font="Cafe24Ohsquareair">
+          댓글 {props.comment_cnt}개
+        </Text>
       </Grid>
     </React.Fragment>
   );

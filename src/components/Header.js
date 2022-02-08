@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Image, Button } from '../elements';
+import { Grid, Image, Button, Text } from '../elements';
 import styled from 'styled-components';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -25,18 +25,21 @@ const Header = React.memo((props) => {
           is_flex
           width="100vw"
           min_width="100vw"
-          padding="10px"
+          padding="10px 0 10px 30px"
           bg="#fff"
           border="1px solid rgb(219,219,219)"
         >
-          <Image
-            shape="circle"
-            src="img/logo2.png"
-            width="100px"
-            _onClick={() => {
-              history.push('/');
-            }}
-          />
+          <Text
+            bold
+            font="Hardworking"
+            size="50px"
+            is_center
+            // _onClick={() => {
+            // //   history.push('/');
+            // // }}
+          >
+            Smiley
+          </Text>
 
           <Grid is_flex min_width="225px" margin="0 20px">
             <Button width="70px">내 정보</Button>

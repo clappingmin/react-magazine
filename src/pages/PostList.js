@@ -44,9 +44,6 @@ function PostList(props) {
                   bg="#fff"
                   border="1px solid rgb(219,219,219)"
                   padding="20px"
-                  _onClick={() => {
-                    history.push(`/post/${p.id}`);
-                  }}
                 >
                   <Post {...p} is_me />
                 </Grid>
@@ -61,9 +58,6 @@ function PostList(props) {
                 bg="#fff"
                 border="1px solid rgb(219,219,219)"
                 padding="20px"
-                _onClick={() => {
-                  history.push(`/post/${p.id}`);
-                }}
               >
                 <Post {...p} />
               </Grid>

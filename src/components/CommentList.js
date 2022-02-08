@@ -25,11 +25,17 @@ const CommentItem = (props) => {
     <Grid is_flex>
       <Grid is_flex width="auto">
         <Image shape="circle" />
-        <Text bold>{user_name}</Text>
+        <Text bold font="Cafe24Ohsquareair">
+          {user_name}
+        </Text>
       </Grid>
       <Grid is_flex margin="0px 4px">
-        <Text margin="0px">{contents}</Text>
-        <Text margin="0px">{insert_dt}</Text>
+        <Text margin="0px" bold font="Cafe24Ohsquareair">
+          {contents}
+        </Text>
+        <Text margin="0px" bold font="Cafe24Ohsquareair">
+          {insert_dt}
+        </Text>
       </Grid>
     </Grid>
   );
