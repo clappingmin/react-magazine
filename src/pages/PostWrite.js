@@ -84,11 +84,11 @@ const PostWrite = (props) => {
           padding="20px"
         >
           {is_edit ? (
-            <Text bold font="Hardworking" size="60px" is_center>
+            <Text bold font="DOSMyungjo" size="60px" is_center>
               게시글 수정
             </Text>
           ) : (
-            <Text bold font="Hardworking" size="60px" is_center>
+            <Text bold font="DOSMyungjo" size="60px" is_center>
               게시글 작성
             </Text>
           )}

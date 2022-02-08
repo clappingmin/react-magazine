@@ -31,14 +31,14 @@ const Header = React.memo((props) => {
         >
           <Text
             bold
-            font="Hardworking"
+            font="DOSMyungjo"
             size="50px"
             is_center
-            // _onClick={() => {
-            // //   history.push('/');
-            // // }}
+            _onClick={() => {
+              history.push('/');
+            }}
           >
-            Smiley
+            Smiley :)
           </Text>
 
           <Grid is_flex min_width="225px" margin="0 20px">
@@ -63,18 +63,21 @@ const Header = React.memo((props) => {
           is_flex
           width="100vw"
           min_width="100vw"
-          padding="10px"
+          padding="10px 0 10px 30px"
           bg="#fff"
           border="1px solid rgb(219,219,219)"
         >
-          <Image
-            shape="circle"
-            src="img/logo2.png"
-            width="100px"
+          <Text
+            bold
+            font="DOSMyungjo"
+            size="50px"
+            is_center
             _onClick={() => {
               history.push('/');
             }}
-          />
+          >
+            Smiley :)
+          </Text>
           <Grid is_flex min_width="150px" margin="0 20px">
             <Button
               width="70px"

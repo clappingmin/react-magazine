@@ -42,7 +42,7 @@ function Signup(props) {
           bg="#fff"
           padding="20px"
         >
-          <Text bold font="Hardworking" size="60px" is_center>
+          <Text bold font="DOSMyungjo" size="60px" is_center>
             Sign up
           </Text>
           <Input

@@ -11,28 +11,27 @@ function Login(props) {
   const [pwd, setPwd] = React.useState('');
 
   const changeId = (e) => {
-    checkBtnDisabled();
     setId(e.target.value);
   };
 
   const changePwd = (e) => {
-    checkBtnDisabled();
     setPwd(e.target.value);
   };
 
-  const checkBtnDisabled = () => {
-    if (id !== '' && pwd !== '' && emailCheck(id)) {
-      const Btn = document.getElementById('loginBtn');
+  // 버튼 활성화, 비활성화 체크 함수
+  if (id !== '' && pwd !== '' && emailCheck(id)) {
+    const Btn = document.getElementById('loginBtn');
+    if (Btn) {
       Btn.style.opacity = 1;
       Btn.style.is_disabled = false;
-      console.log('활성화');
-    } else if (id === '' || pwd === '' || !emailCheck(id)) {
-      const Btn = document.getElementById('loginBtn');
+    }
+  } else if (id === '' || pwd === '' || !emailCheck(id)) {
+    const Btn = document.getElementById('loginBtn');
+    if (Btn) {
       Btn.style.opacity = 0.5;
       Btn.style.is_disabled = true;
-      console.log('비활성화');
     }
-  };
+  }
 
   const login = () => {
     if (id === '' || pwd === '') {
@@ -57,7 +56,7 @@ function Login(props) {
           bg="#fff"
           padding="20px"
         >
-          <Text bold font="Hardworking" size="60px" is_center>
+          <Text bold font="DOSMyungjo" size="60px" is_center>
             Log in
           </Text>
           <Input
