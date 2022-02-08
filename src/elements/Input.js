@@ -46,6 +46,7 @@ const InputBox = styled.input`
   background: rgb(250, 250, 250);
   border: 1px solid rgb(219, 219, 219);
   padding: 0 10px;
+  font-family: 맑은 고딕;
 `;
 
 export default Input;

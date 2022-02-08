@@ -20,6 +20,17 @@ function Login(props) {
     setPwd(e.target.value);
   };
 
+  // 버튼 활성화 비활성화
+  // if (id !== '' && pwd !== '' && emailCheck(id)) {
+  //   const Btn = document.getElementById('loginBtn');
+  //   Btn.style.opacity = 1;
+  //   Btn.style.is_disabled = false;
+  // } else {
+  //   const Btn = document.getElementById('loginBtn');
+  //   Btn.style.opacity = 0.5;
+  //   Btn.style.is_disabled = true;
+  // }
+
   const login = () => {
     if (id === '' || pwd === '') {
       window.alert('아이디 혹은 비밀번호가 공란입니다! 입력해주세요!');
@@ -30,7 +41,6 @@ function Login(props) {
       window.alert('이메일 형식이 맞지 않습니다!');
       return;
     }
-
     dispatch(userActions.loginFB(id, pwd));
   };
 
@@ -58,11 +68,14 @@ function Login(props) {
             type="password"
             placeholder="비밀번호를 입력하세요"
           />
+
           <Button
+            _id="loginBtn"
             _onClick={() => {
               console.log('로그인 했어~');
               login();
             }}
+            is_disabled={true}
           >
             로그인
           </Button>

@@ -65,7 +65,11 @@ const PostDetail = (props) => {
           padding="20px"
         >
           {post && (
-            <Post {...post} is_me={post.user_info.user_id === user_info.uid} />
+            <Post
+              {...post}
+              // 비로그인시에는 user_info가 없어서 먼저 있는지 체크하는 것을 넣어주고 uid를 비교
+              is_me={user_info && post.user_info.user_id === user_info.uid}
+            />
           )}
           <CommentWrite />
           <CommentList />

@@ -18,40 +18,46 @@ const Post = (props) => {
             {props.user_info.user_name}
           </Text>
         </Grid>
-        <Grid is_flex min_width="28%">
-          {props.is_me && (
-            <Button
-              width="auto"
-              _onClick={() => {
-                history.push(`/write/${props.id}`);
-              }}
-            >
-              수정
-            </Button>
-          )}
-          {props.is_me && (
-            <Button
-              width="auto"
-              _onClick={() => {
-                // 삭제
-                const id = props.id;
-                const postDB = firestore.collection('post');
-                postDB
-                  .doc(id)
-                  .delete()
-                  .then((doc) => {
-                    // 새로고침
-                    window.location.replace('/');
-                  });
-                alert('삭제 완료');
-              }}
-            >
-              삭제
-            </Button>
-          )}
-          <Text bold font="Cafe24Ohsquareair">
-            {props.insert_dt}
-          </Text>
+        <Grid is_flex>
+          <Grid is_flex min_width="80px">
+            {props.is_me && (
+              <Button
+                width="auto"
+                margin="10px"
+                _onClick={() => {
+                  history.push(`/write/${props.id}`);
+                }}
+              >
+                수정
+              </Button>
+            )}
+            {props.is_me && (
+              <Button
+                width="auto"
+                margin="10px"
+                _onClick={() => {
+                  // 삭제
+                  const id = props.id;
+                  const postDB = firestore.collection('post');
+                  postDB
+                    .doc(id)
+                    .delete()
+                    .then((doc) => {
+                      // 새로고침
+                      window.location.replace('/');
+                    });
+                  alert('삭제 완료');
+                }}
+              >
+                삭제
+              </Button>
+            )}
+          </Grid>
+          <Grid margin="0 0 0 10px">
+            <Text bold font="Cafe24Ohsquareair">
+              {props.insert_dt}
+            </Text>
+          </Grid>
         </Grid>
       </Grid>
 
@@ -68,6 +74,7 @@ const Post = (props) => {
           _onClick={() => {
             history.push(`/post/${props.id}`);
           }}
+          vv
         ></Image>
       </Grid>
       <Grid padding="16px">

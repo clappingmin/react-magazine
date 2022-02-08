@@ -11,6 +11,8 @@ function Button(props) {
     is_circle,
     size,
     is_animation,
+    is_disabled,
+    _id,
   } = props;
 
   const styles = {
@@ -20,10 +22,11 @@ function Button(props) {
     is_circle,
     size,
     is_animation,
+    is_disabled,
   };
 
   return (
-    <Btn {...styles} onClick={_onClick}>
+    <Btn {...styles} onClick={_onClick} id={_id}>
       {children}
     </Btn>
   );
@@ -48,6 +51,7 @@ const Btn = styled.button`
   color: #fff;
   font-weight: 900;
   margin: 5px 0;
+  cursor: pointer;
   ${(props) =>
     props.is_circle ? `border-radius: 50%;` : `border-radius: 5px;`}
   font-size: ${(props) => props.size};
@@ -61,5 +65,6 @@ const Btn = styled.button`
   }
   `
       : ''};
+  ${(props) => (props.is_disabled ? 'disabled=true;' : '')}
 `;
 export default Button;
