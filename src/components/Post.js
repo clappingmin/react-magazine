@@ -3,20 +3,23 @@ import React from 'react';
 import { Grid, Image, Text, Button } from '../elements';
 import { history } from '../redux/configureStore';
 
+import { actionCreators } from '../redux/modules/post';
+
+import { firestore } from '../shared/firebase';
+
 const Post = (props) => {
   return (
     <React.Fragment>
-      <Grid is_flex>
-        <Grid is_flex width="auto">
+      {/* 게시글 작성자 정보, 작성일, 수정 버튼 */}
+      <Grid is_flex width="1fr">
+        <Grid is_flex min_width="15%">
           <Image shape="circle" src={props.src} width="35px" height="35px" />
           <Text bold>{props.user_info.user_name}</Text>
         </Grid>
-        <Grid is_flex width="auto">
+        <Grid is_flex min_width="25%">
           {props.is_me && (
             <Button
               width="auto"
-              padding="4px"
-              margin="4px"
               _onClick={() => {
                 history.push(`/write/${props.id}`);
               }}
@@ -24,14 +27,36 @@ const Post = (props) => {
               수정
             </Button>
           )}
+          {props.is_me && (
+            <Button
+              width="auto"
+              _onClick={() => {
+                // 삭제
+                const id = props.id;
+                const postDB = firestore.collection('post');
+                postDB
+                  .doc(id)
+                  .delete()
+                  .then((doc) => {
+                    // 새로고침
+                    window.location.replace('/');
+                  });
+                alert('삭제 완료');
+              }}
+            >
+              삭제
+            </Button>
+          )}
           <Text>{props.insert_dt}</Text>
         </Grid>
       </Grid>
-      <Grid>
-        <Image shape="rectangle" src={props.image_url}></Image>
-      </Grid>
+
+      {/* 게시한 이미지, 글, 댓글 */}
       <Grid padding="16px">
         <Text>{props.contents}</Text>
+      </Grid>
+      <Grid>
+        <Image shape="rectangle" src={props.image_url}></Image>
       </Grid>
       <Grid padding="16px">
         <Text bold>댓글 {props.comment_cnt}개</Text>

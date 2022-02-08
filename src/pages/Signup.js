@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 import { Grid, Text, Input, Button } from '../elements';
 
 import { useDispatch } from 'react-redux';

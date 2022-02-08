@@ -27,7 +27,7 @@ const Image = (props) => {
 
 Image.defaultProps = {
   shape: 'circle',
-  src: 'http://storage.enuri.info/pic_upload/knowbox2/201909/0920148702019092563a27187-c035-40ef-9d20-10bbb9c08e1f.jpeg',
+  src: '/img/logo.png',
   height: '35px',
   width: '35px',
   _onClick: null,

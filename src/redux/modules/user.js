@@ -1,13 +1,12 @@
 import { createAction, handleActions } from 'redux-actions'; // action과 reducer를 편하게 만들어준다.
 import { produce } from 'immer';
 
-import { setCookie, getCookie, deleteCookie } from '../../shared/Cookie';
+import { setCookie, deleteCookie } from '../../shared/Cookie';
 
 import { auth } from '../../shared/firebase';
 import firebase from 'firebase/app';
 
 // actions (액션 타입 선언)
-const LOG_IN = 'LOG_IN';
 const LOG_OUT = 'LOG_OUT';
 const GET_USER = 'GET_USER';
 const SET_USER = 'SET_USER';
@@ -72,6 +71,7 @@ const signupFB = (id, pwd, user_name) => {
             history.push('/');
           })
           .catch((error) => {
+            // 에러가 나면..
             var errorCode = error.code;
             var errorMessage = error.message;
             console.log(errorCode, errorMessage);
