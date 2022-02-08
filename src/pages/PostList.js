@@ -34,7 +34,7 @@ function PostList(props) {
         >
           {/* 게시글 목록 가져오기 */}
           {post_list.map((p, idx) => {
-            if (user_info && p.user_info.user_id === user_info.uid) {
+            if (user_info && p.user_info.user_id === user_info?.uid) {
               return (
                 <Grid
                   key={p.id}
@@ -44,6 +44,9 @@ function PostList(props) {
                   bg="#fff"
                   border="1px solid rgb(219,219,219)"
                   padding="20px"
+                  _onClick={() => {
+                    history.push(`/post/${p.id}`);
+                  }}
                 >
                   <Post {...p} is_me />
                 </Grid>
@@ -58,6 +61,9 @@ function PostList(props) {
                 bg="#fff"
                 border="1px solid rgb(219,219,219)"
                 padding="20px"
+                _onClick={() => {
+                  history.push(`/post/${p.id}`);
+                }}
               >
                 <Post {...p} />
               </Grid>
