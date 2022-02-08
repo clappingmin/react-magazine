@@ -1,7 +1,5 @@
 import React from 'react';
-import Header from '../components/Header';
 import { Grid, Text, Input, Button } from '../elements';
-import { deleteCookie, setCookie } from '../shared/Cookie';
 
 import { actionCreators as userActions } from '../redux/modules/user'; // as : 별명 주는거
 import { useDispatch } from 'react-redux';
@@ -13,23 +11,28 @@ function Login(props) {
   const [pwd, setPwd] = React.useState('');
 
   const changeId = (e) => {
+    checkBtnDisabled();
     setId(e.target.value);
   };
 
   const changePwd = (e) => {
+    checkBtnDisabled();
     setPwd(e.target.value);
   };
 
-  // 버튼 활성화 비활성화
-  // if (id !== '' && pwd !== '' && emailCheck(id)) {
-  //   const Btn = document.getElementById('loginBtn');
-  //   Btn.style.opacity = 1;
-  //   Btn.style.is_disabled = false;
-  // } else {
-  //   const Btn = document.getElementById('loginBtn');
-  //   Btn.style.opacity = 0.5;
-  //   Btn.style.is_disabled = true;
-  // }
+  const checkBtnDisabled = () => {
+    if (id !== '' && pwd !== '' && emailCheck(id)) {
+      const Btn = document.getElementById('loginBtn');
+      Btn.style.opacity = 1;
+      Btn.style.is_disabled = false;
+      console.log('활성화');
+    } else if (id === '' || pwd === '' || !emailCheck(id)) {
+      const Btn = document.getElementById('loginBtn');
+      Btn.style.opacity = 0.5;
+      Btn.style.is_disabled = true;
+      console.log('비활성화');
+    }
+  };
 
   const login = () => {
     if (id === '' || pwd === '') {
@@ -72,7 +75,6 @@ function Login(props) {
           <Button
             _id="loginBtn"
             _onClick={() => {
-              console.log('로그인 했어~');
               login();
             }}
             is_disabled={true}

@@ -65,6 +65,6 @@ const Btn = styled.button`
   }
   `
       : ''};
-  ${(props) => (props.is_disabled ? 'disabled=true;' : '')}
+  ${(props) => (props.is_disabled ? 'opacity:.5; disabled=true;' : '')}
 `;
 export default Button;
