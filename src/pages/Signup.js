@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid, Text, Input, Button } from '../elements';
 
+import { setCookie, deleteCookie } from '../shared/Cookie';
+
 import { useDispatch } from 'react-redux';
 import { actionCreators as userActions } from '../redux/modules/user';
 import { emailCheck } from '../shared/common';
@@ -13,6 +15,37 @@ function Signup(props) {
   const [pwd_check, setPwdCheck] = React.useState('');
   const [user_name, setUserName] = React.useState('');
 
+  // 버튼 활성화, 비활성화 체크 함수
+  if (
+    id !== '' &&
+    pwd !== '' &&
+    pwd_check !== '' &&
+    user_name !== '' &&
+    pwd === pwd_check &&
+    pwd.length >= 6 &&
+    emailCheck(id)
+  ) {
+    const Btn = document.getElementById('SignBtn');
+    if (Btn) {
+      Btn.style.opacity = 1;
+      Btn.style.is_disabled = false;
+    }
+  } else if (
+    id === '' ||
+    pwd === '' ||
+    pwd_check === '' ||
+    user_name === '' ||
+    pwd !== pwd_check ||
+    pwd.length < 6 ||
+    !emailCheck(id)
+  ) {
+    const Btn = document.getElementById('SignBtn');
+    if (Btn) {
+      Btn.style.opacity = 0.5;
+      Btn.style.is_disabled = true;
+    }
+  }
+
   const signup = () => {
     if (id === '' || pwd === '' || user_name === '') {
       alert('모든 칸을 입력해주세요.');
@@ -21,6 +54,10 @@ function Signup(props) {
 
     if (pwd !== pwd_check) {
       alert('비밀번호가 비밀번호 확인과 다릅니다. 다시 입력해주세요.');
+      return;
+    }
+    if (pwd.length < 6) {
+      alert('비밀번호 길이가 너무 짧아요.(최소 6자리 이상)');
       return;
     }
 
@@ -71,7 +108,9 @@ function Signup(props) {
               setPwdCheck(e.target.value);
             }}
           />
-          <Button _onClick={signup}>회원가입</Button>
+          <Button _onClick={signup} _id="SignBtn" is_disabled={true}>
+            회원가입
+          </Button>
         </Grid>
       </Grid>
     </React.Fragment>

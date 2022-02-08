@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Text, Input, Button } from '../elements';
+import { setCookie, deleteCookie } from '../shared/Cookie';
 
 import { actionCreators as userActions } from '../redux/modules/user'; // as : 별명 주는거
 import { useDispatch } from 'react-redux';
