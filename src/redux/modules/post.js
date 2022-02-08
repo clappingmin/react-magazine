@@ -9,16 +9,23 @@ import { actionCreators as imageActions } from './image';
 const SET_POST = 'SET_POST';
 const ADD_POST = 'ADD_POST';
 const EDIT_POST = 'EDIT_POST';
+const LOADING = 'LOADING';
 
-const setPost = createAction(SET_POST, (post_list) => ({ post_list }));
+const setPost = createAction(SET_POST, (post_list, paging) => ({
+  post_list,
+  paging,
+}));
 const addPost = createAction(ADD_POST, (post) => ({ post }));
 const editPost = createAction(EDIT_POST, (post_id, post) => ({
   post_id,
   post,
 }));
+const loading = createAction(LOADING, (is_loading) => ({ is_loading }));
 
 const initialState = {
   list: [],
+  paging: { start: null, next: null, size: 3 }, // 시작점, 다음 정보, 개수
+  is_loading: false, // 가지고 오고 있는지 확인
 };
 
 // 게시글 하나에는 어떤 정보가 있어야 하는 지 하나 만들어둡시다! :)
@@ -155,57 +162,92 @@ const addPostFB = (contents = '') => {
   };
 };
 
-const getPostFB = () => {
+const getPostFB = (start = null, size = 3) => {
   return function (dispatch, getState, { history }) {
+    // state에서 페이징 정보 가져오기
+    let _paging = getState().post.paging;
+
+    // 시작정보가 기록되었는데 다음 가져올 데이터가 없다면? 앗, 리스트가 끝났겠네요!
+    // 그럼 아무것도 하지말고 return을 해야죠!
+    if (_paging.start && !_paging.next) {
+      return;
+    }
+
+    // 가져오기 시작~!
+    dispatch(loading(true));
+
     const postDB = firestore.collection('post');
 
-    postDB.get().then((docs) => {
-      let post_list = [];
+    let query = postDB.orderBy('insert_dt', 'desc');
 
-      docs.forEach((doc) => {
-        // 잘 가져왔나 확인하기! :)
-        // 앗! DB에서 가져온 것하고 우리가 Post 컴포넌트에서 쓰는 데이터 모양새가 다르네요!
-        // console.log(doc.id, doc.data());
+    // 시작점 정보가 있으면? 시작점부터 가져오도록 쿼리 수정!
+    if (start) {
+      query = query.startAt(start);
+    }
 
-        // 데이터 모양을 맞춰주자!
-        let _post = doc.data();
+    // 사이즈보다 1개 더 크게 가져옵시다.
+    // 3개씩 끊어서 보여준다고 할 때, 4개를 가져올 수 있으면? 앗 다음 페이지가 있겠네하고 알 수 있으니까요.
+    // 만약 4개 미만이라면? 다음 페이지는 없겠죠! :)
+    query
+      .limit(size + 1)
+      .get()
+      .then((docs) => {
+        let post_list = [];
 
-        //   let post = {
-        //     id: doc.id,
-        //     user_info: {
-        //         user_name: _post.user_name,
-        //         user_profile: _post.user_profile,
-        //         user_id: _post.user_id,
-        //     },
-        //     contents: _post.contents,
-        //     image_url: _post.image_url,
-        //     comment_cnt: _post.comment_cnt,
-        //     imsert_dt: _post.insert_dt
-        // }
-        // 위의 코드를 고수처럼 작성하는 방법 (아래 방식)
+        // 새롭게 페이징 정보를 만들어줘요.
+        // 시작점에는 새로 가져온 정보의 시작점을 넣고,
+        // next에는 마지막 항목을 넣습니다.
+        // (이 next가 다음번 리스트 호출 때 start 파라미터로 넘어올거예요.)
+        let paging = {
+          start: docs.docs[0],
+          next:
+            docs.docs.length === size + 1 // 다음 페이지가 있는지 체크 -> 화면에는 3개를 보여줄 건데 docs의 길이가 4개라면 다음페이지도 있다는 의미
+              ? docs.docs[docs.docs.length - 1] // 4개가 맞아서 다음페이지가 있다. -> 4번째꺼를 가져온다.
+              : null, // 다음페이지가 없다.
+          size: size,
+        };
 
-        // ['comment_cnt','contents'...]
-        let post = Object.keys(_post).reduce(
-          (acc, cur) => {
-            if (cur.indexOf('user_') !== -1) {
-              return {
-                ...acc,
-                user_info: { ...acc.user_info, [cur]: _post[cur] },
-              };
-            }
-            return { ...acc, [cur]: _post[cur] };
-          },
-          { id: doc.id, user_info: {} }
-        );
+        docs.forEach((doc) => {
+          let _post = doc.data();
 
-        post_list.push(post);
+          //   let post = {
+          //     id: doc.id,
+          //     user_info: {
+          //         user_name: _post.user_name,
+          //         user_profile: _post.user_profile,
+          //         user_id: _post.user_id,
+          //     },
+          //     contents: _post.contents,
+          //     image_url: _post.image_url,
+          //     comment_cnt: _post.comment_cnt,
+          //     imsert_dt: _post.insert_dt
+          // }
+          // 위의 코드를 고수처럼 작성하는 방법 (아래 방식)
+
+          let post = Object.keys(_post).reduce(
+            (acc, cur) => {
+              if (cur.indexOf('user_') !== -1) {
+                return {
+                  ...acc,
+                  user_info: { ...acc.user_info, [cur]: _post[cur] },
+                };
+              }
+              return { ...acc, [cur]: _post[cur] };
+            },
+            { id: doc.id, user_info: {} }
+          );
+
+          post_list.push(post);
+        });
+
+        // 마지막 하나는 빼줍니다.
+        // 그래야 size대로 리스트가 추가되니까요!
+        // 마지막 데이터는 다음 페이지의 유무를 알려주기 위한 친구일 뿐! 리스트에 들어가지 않아요!
+        // 즉 size 3개까지만 넣어주고 4개째는 빼주자.
+        post_list.pop();
+
+        dispatch(setPost(post_list, paging));
       });
-
-      // 리스트 확인하기!
-      console.log(post_list);
-
-      dispatch(setPost(post_list));
-    });
   };
 };
 
@@ -214,7 +256,9 @@ export default handleActions(
   {
     [SET_POST]: (state, action) =>
       produce(state, (draft) => {
-        draft.list = action.payload.post_list;
+        draft.list.push(...action.payload.post_list);
+        draft.paging = action.payload.paging;
+        draft.is_loading = false; // 다 불러왔으니 false
       }),
 
     [ADD_POST]: (state, action) =>
@@ -226,6 +270,10 @@ export default handleActions(
         let idx = draft.list.findIndex((p) => p.id === action.payload.post_id);
 
         draft.list[idx] = { ...draft.list[idx], ...action.payload.post };
+      }),
+    [LOADING]: (state, action) =>
+      produce(state, (draft) => {
+        draft.is_loading = action.payload.is_loading;
       }),
   },
   initialState

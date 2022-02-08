@@ -8,11 +8,14 @@ import Permit from '../shared/Permit';
 import { history } from '../redux/configureStore';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators as postActions } from '../redux/modules/post';
+import InfinityScroll from '../shared/InfinityScroll';
 
 function PostList(props) {
   const dispatch = useDispatch();
   const post_list = useSelector((state) => state.post.list);
   const user_info = useSelector((state) => state.user.user);
+  const is_loading = useSelector((state) => state.post.is_loading);
+  const paging = useSelector((state) => state.post.paging);
 
   React.useEffect(() => {
     if (post_list.length === 0) dispatch(postActions.getPostFB());
@@ -21,9 +24,31 @@ function PostList(props) {
   return (
     <React.Fragment>
       <Grid padding={'100px 0'}>
-        {/* 게시글 목록 가져오기 */}
-        {post_list.map((p, idx) => {
-          if (user_info && p.user_info.user_id === user_info.uid) {
+        <InfinityScroll
+          callNext={() => {
+            console.log('next!');
+            dispatch(postActions.getPostFB(paging.next));
+          }}
+          is_next={paging.next ? true : false}
+          loading={is_loading}
+        >
+          {/* 게시글 목록 가져오기 */}
+          {post_list.map((p, idx) => {
+            if (user_info && p.user_info.user_id === user_info.uid) {
+              return (
+                <Grid
+                  key={p.id}
+                  width="940px"
+                  min_width="485px"
+                  margin=" 0 auto 40px"
+                  bg="#fff"
+                  border="1px solid rgb(219,219,219)"
+                  padding="20px"
+                >
+                  <Post {...p} is_me />
+                </Grid>
+              );
+            }
             return (
               <Grid
                 key={p.id}
@@ -34,24 +59,11 @@ function PostList(props) {
                 border="1px solid rgb(219,219,219)"
                 padding="20px"
               >
-                <Post {...p} is_me />
+                <Post {...p} />
               </Grid>
             );
-          }
-          return (
-            <Grid
-              key={p.id}
-              width="940px"
-              min_width="485px"
-              margin=" 0 auto 40px"
-              bg="#fff"
-              border="1px solid rgb(219,219,219)"
-              padding="20px"
-            >
-              <Post {...p} />
-            </Grid>
-          );
-        })}
+          })}
+        </InfinityScroll>
       </Grid>
 
       {/* 게시글 작성 버튼 */}
