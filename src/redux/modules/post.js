@@ -244,7 +244,7 @@ const getPostFB = (start = null, size = 3) => {
         // 그래야 size대로 리스트가 추가되니까요!
         // 마지막 데이터는 다음 페이지의 유무를 알려주기 위한 친구일 뿐! 리스트에 들어가지 않아요!
         // 즉 size 3개까지만 넣어주고 4개째는 빼주자.
-        post_list.pop();
+        if (post_list.length === 4) post_list.pop();
 
         dispatch(setPost(post_list, paging));
       });

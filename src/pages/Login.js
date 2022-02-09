@@ -19,21 +19,6 @@ function Login(props) {
     setPwd(e.target.value);
   };
 
-  // 버튼 활성화, 비활성화 체크 함수
-  if (id !== '' && pwd !== '' && emailCheck(id)) {
-    const Btn = document.getElementById('loginBtn');
-    if (Btn) {
-      Btn.style.opacity = 1;
-      Btn.style.is_disabled = false;
-    }
-  } else if (id === '' || pwd === '' || !emailCheck(id)) {
-    const Btn = document.getElementById('loginBtn');
-    if (Btn) {
-      Btn.style.opacity = 0.5;
-      Btn.style.is_disabled = true;
-    }
-  }
-
   const login = () => {
     if (id === '' || pwd === '') {
       window.alert('아이디 혹은 비밀번호가 공란입니다! 입력해주세요!');
@@ -73,11 +58,11 @@ function Login(props) {
           />
 
           <Button
-            _id="loginBtn"
             _onClick={() => {
               login();
             }}
-            is_disabled={true}
+            // 버튼 활성화 체크
+            is_disabled={id === '' || pwd === '' || !emailCheck(id)}
           >
             로그인
           </Button>

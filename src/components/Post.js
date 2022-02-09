@@ -8,11 +8,12 @@ import { actionCreators } from '../redux/modules/post';
 import { firestore } from '../shared/firebase';
 
 const Post = (props) => {
+  console.log(props.user_info.user_id);
   return (
     <React.Fragment>
       {/* 게시글 작성자 정보, 작성일, 수정 버튼 */}
       <Grid is_flex width="1fr">
-        <Grid is_flex min_width="15%">
+        <Grid is_flex>
           <Image shape="circle" src={props.src} width="35px" height="35px" />
           <Text bold font="Cafe24Ohsquareair">
             {props.user_info.user_name}
@@ -74,7 +75,6 @@ const Post = (props) => {
           _onClick={() => {
             history.push(`/post/${props.id}`);
           }}
-          vv
         ></Image>
       </Grid>
       <Grid padding="16px">

@@ -38,7 +38,7 @@ const Header = React.memo((props) => {
               history.push('/');
             }}
           >
-            Smiley :)
+            Smiley
           </Text>
 
           <Grid is_flex min_width="225px" margin="0 20px">
@@ -76,7 +76,7 @@ const Header = React.memo((props) => {
               history.push('/');
             }}
           >
-            Smiley :)
+            Smiley
           </Text>
           <Grid is_flex min_width="150px" margin="0 20px">
             <Button

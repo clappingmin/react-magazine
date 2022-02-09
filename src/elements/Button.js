@@ -26,7 +26,7 @@ function Button(props) {
   };
 
   return (
-    <Btn {...styles} onClick={_onClick} id={_id}>
+    <Btn {...styles} onClick={_onClick}>
       {children}
     </Btn>
   );
@@ -65,6 +65,9 @@ const Btn = styled.button`
   }
   `
       : ''};
-  ${(props) => (props.is_disabled ? 'opacity:.5; disabled=true;' : '')}
+  ${(props) =>
+    props.is_disabled
+      ? 'opacity:.5; disabled=true;'
+      : 'opacity:1; disabled=false;'}
 `;
 export default Button;
