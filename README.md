@@ -94,12 +94,15 @@ $ yarn add ladash
 |메인화면|무한스크롤|
 |:---:|:---:|
 |![메인화면](https://blog.kakaocdn.net/dn/cAwJ7J/btrsXtUtTNe/9vSbhjjWxZUXmjmBpoorwK/img.gif)|![무한스크롤](https://blog.kakaocdn.net/dn/TMZIK/btrsWLuyIqP/kqet0Dt7gmHypX4oB2nKFk/img.gif)|
+
 |로그인|회원가입|
 |:---:|:---:|
 |![로그인](https://blog.kakaocdn.net/dn/mRlCI/btrsUddWV4O/9HIkFYWl2dWmYwbmvoRsfk/img.gif)|![회원가입](https://blog.kakaocdn.net/dn/IiFaC/btrsSwrCqBk/LeesXl3WzQ6K0KTBEoOpa1/img.gif)|
+
 |게시글 작성|게시글 수정|
 |:---:|:---:|
 |![게시글 작성](https://blog.kakaocdn.net/dn/lgXXm/btrsW9PuIBc/cSpsx6VgaI6nXpjVFLEUZ0/img.gif)|![게시글 수정](https://blog.kakaocdn.net/dn/xiN1g/btrsTcsTO8u/8b36qZqDIbtxRquKRoocm1/img.gif)|
+
 |게시글 조회|게시글 삭제|
 |:---:|:---:|
 |![게시글 조회](https://blog.kakaocdn.net/dn/6QRVU/btrsWKCsGfE/ehEy1ZKtra3VIWXHgCW7i0/img.gif)|![게시글 삭제](https://blog.kakaocdn.net/dn/kMz0E/btrsY8vwUQd/kOIUI6gtGDEHUelzEi7MOk/img.gif)|
