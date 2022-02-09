@@ -91,15 +91,12 @@ $ yarn add ladash
 ## 결과
 
 [smiley](http://hanghae99-react-magazine.s3-website.ap-northeast-2.amazonaws.com/)
-|메인화면|무한스크롤|
-|:---:|:---:|
-|![메인화면](https://blog.kakaocdn.net/dn/cAwJ7J/btrsXtUtTNe/9vSbhjjWxZUXmjmBpoorwK/img.gif)|![무한스크롤](https://blog.kakaocdn.net/dn/cfvYs6/btrsRaa8ffb/UWsRaS3HWNBBIELjBfesJK/img.gif)|
 
-
-||||
-|:---:|:---:|:---:|
-|왼쪽정렬|오른쪽정렬|중앙정렬|
-
-||||
-|:---:|:---:|:---:|
-|왼쪽정렬|오른쪽정렬|중앙정렬|
+![메인화면](https://blog.kakaocdn.net/dn/cAwJ7J/btrsXtUtTNe/9vSbhjjWxZUXmjmBpoorwK/img.gif)
+![무한스크롤](https://blog.kakaocdn.net/dn/cfvYs6/btrsRaa8ffb/UWsRaS3HWNBBIELjBfesJK/img.gif)
+![로그인](https://blog.kakaocdn.net/dn/mRlCI/btrsUddWV4O/9HIkFYWl2dWmYwbmvoRsfk/img.gif)
+![회원가입](https://blog.kakaocdn.net/dn/IiFaC/btrsSwrCqBk/LeesXl3WzQ6K0KTBEoOpa1/img.gif)
+<!-- ![메인화면](https://blog.kakaocdn.net/dn/cAwJ7J/btrsXtUtTNe/9vSbhjjWxZUXmjmBpoorwK/img.gif)
+![무한스크롤](https://blog.kakaocdn.net/dn/cfvYs6/btrsRaa8ffb/UWsRaS3HWNBBIELjBfesJK/img.gif)
+![메인화면](https://blog.kakaocdn.net/dn/cAwJ7J/btrsXtUtTNe/9vSbhjjWxZUXmjmBpoorwK/img.gif)
+![무한스크롤](https://blog.kakaocdn.net/dn/cfvYs6/btrsRaa8ffb/UWsRaS3HWNBBIELjBfesJK/img.gif) -->
