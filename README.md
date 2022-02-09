@@ -92,5 +92,8 @@ $ yarn add ladash
 
 [smiley](http://hanghae99-react-magazine.s3-website.ap-northeast-2.amazonaws.com/)
 
-| ![완성](https://blog.kakaocdn.net/dn/c8Fram/btrspIYzJcx/CRmkKkLgZvcmLD9hHAxFWK/img.gif) | ![수정](https://blog.kakaocdn.net/dn/bR7Paj/btrsnm9jVS2/cn7HEFkPXYKt6rHV5KocZk/img.gif) |
-| :-------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------: |
+||||
+|:---:|:---:|:---:|
+|왼쪽정렬|오른쪽정렬|중앙정렬|
+|왼쪽정렬|오른쪽정렬|중앙정렬|
+|왼쪽정렬|오른쪽정렬|중앙정렬|
