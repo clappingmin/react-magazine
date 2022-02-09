@@ -46,7 +46,7 @@
        - 이미지가 왼편에, 텍스트는 오른편에 위치한 레이아웃
        - 텍스트가 위에, 이미지는 아래에 위치한 레이아웃
      - [x] 2. 레이아웃 선택 시, 게시글 레이아웃(모양새)대로 보이도록 한다.
-     - [ ] 3. **텍스트, 이미지 중 입력 안된 게 있다면 게시글 작성 버튼 비활성화**
+     - [x] 3. **텍스트, 이미지 중 입력 안된 게 있다면 게시글 작성 버튼 비활성화**
      - [x] 4. 작성 완료 시 메인 페이지로 이동
 5. 게시글 상세 페이지
 
@@ -92,5 +92,5 @@ $ yarn add ladash
 
 [smiley](http://hanghae99-react-magazine.s3-website.ap-northeast-2.amazonaws.com/)
 
-|![완성](https://blog.kakaocdn.net/dn/c8Fram/btrspIYzJcx/CRmkKkLgZvcmLD9hHAxFWK/img.gif)|![수정](https://blog.kakaocdn.net/dn/bR7Paj/btrsnm9jVS2/cn7HEFkPXYKt6rHV5KocZk/img.gif)|
-|:---|---:|
+| ![완성](https://blog.kakaocdn.net/dn/c8Fram/btrspIYzJcx/CRmkKkLgZvcmLD9hHAxFWK/img.gif) | ![수정](https://blog.kakaocdn.net/dn/bR7Paj/btrsnm9jVS2/cn7HEFkPXYKt6rHV5KocZk/img.gif) |
+| :-------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------: |
