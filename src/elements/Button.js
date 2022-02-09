@@ -26,7 +26,7 @@ function Button(props) {
   };
 
   return (
-    <Btn {...styles} onClick={_onClick}>
+    <Btn {...styles} onClick={_onClick} disabled={is_disabled}>
       {children}
     </Btn>
   );
@@ -41,6 +41,7 @@ Button.defaultProps = {
   is_circle: null,
   size: '14px',
   is_animation: null,
+  is_disabled: false,
 };
 
 const Btn = styled.button`
@@ -65,9 +66,6 @@ const Btn = styled.button`
   }
   `
       : ''};
-  ${(props) =>
-    props.is_disabled
-      ? 'opacity:.5; disabled=true;'
-      : 'opacity:1; disabled=false;'}
+  ${(props) => (props.is_disabled ? 'opacity:.5;' : 'opacity:1;')}
 `;
 export default Button;
