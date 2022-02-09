@@ -1,6 +1,9 @@
 import React from 'react';
 
 import Post from '../components/Post';
+import PostR1 from '../components/PostR1';
+import PostR2 from '../components/PostR2';
+
 import { Button, Grid } from '../elements';
 
 import Permit from '../shared/Permit';
@@ -23,7 +26,7 @@ function PostList(props) {
 
   return (
     <React.Fragment>
-      <Grid padding={'100px 0'}>
+      <Grid padding={'100px 0'} min_width="100%">
         <InfinityScroll
           callNext={() => {
             console.log('next!');
@@ -45,7 +48,22 @@ function PostList(props) {
                   border="1px solid rgb(219,219,219)"
                   padding="20px"
                 >
-                  <Post {...p} is_me />
+                  {/* {is_edit ? (
+                    <Text bold font="DOSMyungjo" size="60px" is_center>
+                      게시글 수정
+                    </Text>
+                  ) : (
+                    <Text bold font="DOSMyungjo" size="60px" is_center>
+                      게시글 작성
+                    </Text>
+                  )} */}
+                  {p.style === 'r1' ? (
+                    <PostR1 {...p} is_me />
+                  ) : p.style === 'r2' ? (
+                    <PostR2 {...p} is_me />
+                  ) : (
+                    <Post {...p} is_me />
+                  )}
                 </Grid>
               );
             }

@@ -7,7 +7,7 @@ import { actionCreators } from '../redux/modules/post';
 
 import { firestore } from '../shared/firebase';
 
-const Post = (props) => {
+const PostR1 = (props) => {
   console.log(props.user_info.user_id);
   return (
     <React.Fragment>
@@ -63,12 +63,12 @@ const Post = (props) => {
       </Grid>
 
       {/* 게시한 이미지, 글, 댓글 */}
-      <Grid padding="16px">
-        <Text bold font="Cafe24Ohsquareair">
-          {props.contents}
-        </Text>
-      </Grid>
-      <Grid>
+      <Grid is_flex min_width="100%">
+        <Grid padding="16px" min_width="50%" width="50%">
+          <Text bold font="Cafe24Ohsquareair">
+            {props.contents}
+          </Text>
+        </Grid>
         <Image
           shape="rectangle"
           src={props.image_url}
@@ -86,7 +86,7 @@ const Post = (props) => {
   );
 };
 
-Post.defaultProps = {
+PostR1.defaultProps = {
   user_info: {
     user_name: 'guest',
     user_profile:
@@ -100,4 +100,4 @@ Post.defaultProps = {
   is_me: false,
 };
 
-export default Post;
+export default PostR1;

@@ -20,6 +20,7 @@ const PostWrite = (props) => {
   let _post = is_edit ? post_list.find((p) => p.id === post_id) : null;
 
   const [contents, setContents] = React.useState(_post ? _post.contents : '');
+  const [style, setStyle] = React.useState('r1');
 
   React.useEffect(() => {
     if (is_edit && !_post) {
@@ -38,12 +39,18 @@ const PostWrite = (props) => {
     setContents(e.target.value);
   };
 
+  const clickRadio = (e) => {
+    setStyle(e.target.id);
+  };
+
   const addPost = () => {
-    dispatch(postActions.addPostFB(contents));
+    dispatch(postActions.addPostFB(contents, style));
   };
 
   const editPost = () => {
-    dispatch(postActions.editPostFB(post_id, { contents: contents }));
+    dispatch(
+      postActions.editPostFB(post_id, { contents: contents, style: style })
+    );
   };
 
   if (!is_login) {
@@ -99,8 +106,13 @@ const PostWrite = (props) => {
               미리보기
             </Text>
             <Grid margin="10px 0" min_width="100%">
-              <input type="radio" id="r2" name="radio-box" />
-              <label for="r2">오른쪽에 이미지, 왼쪽에 텍스트</label>
+              <input
+                type="radio"
+                id="r1"
+                name="radio-box"
+                onClick={clickRadio}
+              />
+              <label htmlFor="r1">오른쪽에 이미지, 왼쪽에 텍스트</label>
               <Grid
                 padding="10px"
                 min_width="100%"
@@ -118,8 +130,13 @@ const PostWrite = (props) => {
               </Grid>
             </Grid>
             <Grid margin="10px 0">
-              <input type="radio" id="r2" name="radio-box" />
-              <label for="r2">왼쪽에 이미지, 오른쪽에 텍스트</label>
+              <input
+                type="radio"
+                id="r2"
+                name="radio-box"
+                onClick={clickRadio}
+              />
+              <label htmlFor="r2">왼쪽에 이미지, 오른쪽에 텍스트</label>
               <Grid
                 padding="10px"
                 min_width="100%"
@@ -137,8 +154,13 @@ const PostWrite = (props) => {
               </Grid>
             </Grid>
             <Grid margin="10px 0">
-              <input type="radio" id="r3" name="radio-box" />
-              <label for="r3">하단에 이미지, 상단에 텍스트</label>
+              <input
+                type="radio"
+                id="r3"
+                name="radio-box"
+                onClick={clickRadio}
+              />
+              <label htmlFor="r3">하단에 이미지, 상단에 텍스트</label>
               <Grid
                 padding="10px"
                 min_width="100%"
