@@ -14,10 +14,13 @@ const Grid = (props) => {
     bg,
     children,
     border,
+    top,
+    left,
     bottom,
     right,
     center,
     _onClick,
+    is_contents,
   } = props;
 
   const styles = {
@@ -34,6 +37,7 @@ const Grid = (props) => {
     bottom,
     right,
     center,
+    is_contents,
   };
 
   return (
@@ -85,6 +89,7 @@ const GridBox = styled.div`
       ? `  position: fixed; bottom: ${props.bottom}; right: ${props.right};`
       : ''}
   ${(props) => (props.center ? `text-align: center;` : '')}
+  ${(props) => (props.is_contents ? `align-items: stretch;` : '')}
 `;
 
 export default Grid;

@@ -74,7 +74,7 @@ const PostWrite = (props) => {
   }
   return (
     <React.Fragment>
-      <Grid padding="100px 0">
+      <Grid padding="100px 0" min_width="100%">
         <Grid
           width="940px"
           min_width="485px"
@@ -94,14 +94,67 @@ const PostWrite = (props) => {
           )}
           <Upload />
 
-          <Grid margin="10px 0">
+          <Grid margin="10px 0" min_width="100%">
             <Text size="20px" bold>
               미리보기
             </Text>
-            <Image
-              shape="rectangle"
-              src={preview ? preview : 'http://via.placeholder.com/400x300'}
-            />
+            <Grid margin="10px 0" min_width="100%">
+              <input type="radio" id="r2" name="radio-box" />
+              <label for="r2">오른쪽에 이미지, 왼쪽에 텍스트</label>
+              <Grid
+                padding="10px"
+                min_width="100%"
+                is_flex
+                bg="rgb(230, 230, 230)"
+                is_contents
+              >
+                <Grid min_width="50%" width="50%" padding="10px" bg="#fff">
+                  <Text>{contents}</Text>
+                </Grid>
+                <Image
+                  shape="rectangle"
+                  src={preview ? preview : 'http://via.placeholder.com/400x300'}
+                />
+              </Grid>
+            </Grid>
+            <Grid margin="10px 0">
+              <input type="radio" id="r2" name="radio-box" />
+              <label for="r2">왼쪽에 이미지, 오른쪽에 텍스트</label>
+              <Grid
+                padding="10px"
+                min_width="100%"
+                is_flex
+                bg="rgb(230, 230, 230)"
+                is_contents
+              >
+                <Image
+                  shape="rectangle"
+                  src={preview ? preview : 'http://via.placeholder.com/400x300'}
+                />
+                <Grid min_width="50%" width="50%" padding="10px" bg="#fff">
+                  <Text>{contents}</Text>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid margin="10px 0">
+              <input type="radio" id="r3" name="radio-box" />
+              <label for="r3">하단에 이미지, 상단에 텍스트</label>
+              <Grid
+                padding="10px"
+                min_width="100%"
+                bg="rgb(230, 230, 230)"
+                is_contents
+              >
+                <Grid padding="10px" height="auto" min_height="150px" bg="#fff">
+                  <Text>{contents}</Text>
+                </Grid>
+
+                <Image
+                  shape="rectangle"
+                  src={preview ? preview : 'http://via.placeholder.com/400x300'}
+                />
+              </Grid>
+            </Grid>
           </Grid>
 
           <Grid margin="30px 0">
