@@ -101,7 +101,7 @@ $ yarn add ladash
 
 |게시글 작성|게시글 수정|
 |:---:|:---:|
-|![게시글 작성](https://blog.kakaocdn.net/dn/lgXXm/btrsW9PuIBc/cSpsx6VgaI6nXpjVFLEUZ0/img.gif)|![게시글 수정](https://blog.kakaocdn.net/dn/xiN1g/btrsTcsTO8u/8b36qZqDIbtxRquKRoocm1/img.gif)|
+|![게시글 작성](https://blog.kakaocdn.net/dn/b9gY7Q/btrsXtmFvVM/6zxO6ystg37xkw6jHLtkZ0/img.gif)|![게시글 수정](https://blog.kakaocdn.net/dn/xiN1g/btrsTcsTO8u/8b36qZqDIbtxRquKRoocm1/img.gif)|
 
 |게시글 조회|게시글 삭제|
 |:---:|:---:|
