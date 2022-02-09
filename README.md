@@ -93,7 +93,7 @@ $ yarn add ladash
 [smiley](http://hanghae99-react-magazine.s3-website.ap-northeast-2.amazonaws.com/)
 |메인화면|로그인|회원가입|무한스크롤|
 |:---:|:---:|:---:|:---:|
-|https://blog.kakaocdn.net/dn/cAwJ7J/btrsXtUtTNe/9vSbhjjWxZUXmjmBpoorwK/img.gif|https://blog.kakaocdn.net/dn/mRlCI/btrsUddWV4O/9HIkFYWl2dWmYwbmvoRsfk/img.gif|https://blog.kakaocdn.net/dn/IiFaC/btrsSwrCqBk/LeesXl3WzQ6K0KTBEoOpa1/img.gif|https://blog.kakaocdn.net/dn/cO6FY3/btrsVJjsrgT/3JYfOracVNeb8snyEFVIo0/img.gif|
+|![메인화면](https://blog.kakaocdn.net/dn/cAwJ7J/btrsXtUtTNe/9vSbhjjWxZUXmjmBpoorwK/img.gif)|![로그인](https://blog.kakaocdn.net/dn/mRlCI/btrsUddWV4O/9HIkFYWl2dWmYwbmvoRsfk/img.gif)|![회원가입](https://blog.kakaocdn.net/dn/IiFaC/btrsSwrCqBk/LeesXl3WzQ6K0KTBEoOpa1/img.gif)|![무한스크롤](https://blog.kakaocdn.net/dn/cO6FY3/btrsVJjsrgT/3JYfOracVNeb8snyEFVIo0/img.gif)|
 
 ||||
 |:---:|:---:|:---:|
