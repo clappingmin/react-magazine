@@ -190,11 +190,21 @@ const PostWrite = (props) => {
 
           <Grid>
             {is_edit ? (
-              <Button height="50px" size="30px" _onClick={editPost}>
+              <Button
+                height="50px"
+                size="30px"
+                _onClick={editPost}
+                is_disabled={contents === ''}
+              >
                 게시글 수정
               </Button>
             ) : (
-              <Button height="50px" size="30px" _onClick={addPost}>
+              <Button
+                height="50px"
+                size="30px"
+                _onClick={addPost}
+                is_disabled={contents === ''}
+              >
                 게시글 작성
               </Button>
             )}
