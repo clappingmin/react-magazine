@@ -90,6 +90,6 @@ $ yarn add ladash
 
 ## 결과
 
-[smiley](http://hanghae99-react-magazine.s3-website.ap-northeast-2.amazonaws.com/)
+[Smiley](http://hanghae99-react-magazine.s3-website.ap-northeast-2.amazonaws.com/)
 |![무한스크롤](https://blog.kakaocdn.net/dn/TMZIK/btrsWLuyIqP/kqet0Dt7gmHypX4oB2nKFk/img.gif)|![게시글 작성](https://blog.kakaocdn.net/dn/T7QCv/btrsXsH4UkU/AutuiVUXzao21i8fK90n0k/img.gif)|
 |:---:|:---:|
