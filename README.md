@@ -1,5 +1,13 @@
 # Smiley
 
+## 개발 기간
+
+2022.02.04 - 2022.02.09
+
+## 사용 기술 스택
+
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-#572B6?style=for-the-badge&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black"/> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"/> <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=black"/> <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white"/>
+
 ## 기능
 
 - [ ] 1. 게시글
@@ -12,7 +20,7 @@
   - [ ] 게시글에 좋아요 취소하기
 - [x] 3. 회원가입하기
 - [x] 4. 로그인하기
-- [ ] 5. 파이어베이스 or S3로 배포!
+- [x] 5. 파이어베이스 or S3로 배포!
 
 ## 페이지별 상세페이지별 상세
 
@@ -79,3 +87,10 @@ $ yarn add moment
 # 배열 관리부터 모듈화, 성능 향상과 관련된 것까지 엄청 많은 기능을 제공
 $ yarn add ladash
 ```
+
+## 결과
+
+[smiley](http://hanghae99-react-magazine.s3-website.ap-northeast-2.amazonaws.com/)
+
+|![완성](https://blog.kakaocdn.net/dn/c8Fram/btrspIYzJcx/CRmkKkLgZvcmLD9hHAxFWK/img.gif)|![수정](https://blog.kakaocdn.net/dn/bR7Paj/btrsnm9jVS2/cn7HEFkPXYKt6rHV5KocZk/img.gif)|
+|:---|---:|
