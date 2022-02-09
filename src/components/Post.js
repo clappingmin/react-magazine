@@ -8,7 +8,7 @@ import { actionCreators } from '../redux/modules/post';
 import { firestore } from '../shared/firebase';
 
 const Post = (props) => {
-  console.log(props.user_info.user_id);
+  console.log(props);
   return (
     <React.Fragment>
       {/* 게시글 작성자 정보, 작성일, 수정 버튼 */}

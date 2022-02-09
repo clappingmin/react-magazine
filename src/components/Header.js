@@ -70,7 +70,6 @@ const Header = React.memo((props) => {
             bold
             font="DOSMyungjo"
             size="50px"
-            is_center
             _onClick={() => {
               history.push('/');
             }}

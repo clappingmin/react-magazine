@@ -69,11 +69,11 @@ function PostList(props) {
                 padding="20px"
               >
                 {p.style === 'r1' ? (
-                  <PostR1 {...p} is_me />
+                  <PostR1 {...p} />
                 ) : p.style === 'r2' ? (
-                  <PostR2 {...p} is_me />
+                  <PostR2 {...p} />
                 ) : (
-                  <Post {...p} is_me />
+                  <Post {...p} />
                 )}
               </Grid>
             );
