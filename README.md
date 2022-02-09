@@ -91,8 +91,12 @@ $ yarn add ladash
 ## 결과
 
 [smiley](http://hanghae99-react-magazine.s3-website.ap-northeast-2.amazonaws.com/)
-
+||||
 |:---:|:---:|:---:|
 |왼쪽정렬|오른쪽정렬|중앙정렬|
+||||
+|:---:|:---:|:---:|
 |왼쪽정렬|오른쪽정렬|중앙정렬|
+||||
+|:---:|:---:|:---:|
 |왼쪽정렬|오른쪽정렬|중앙정렬|
