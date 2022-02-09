@@ -91,5 +91,5 @@ $ yarn add ladash
 ## 결과
 
 [smiley](http://hanghae99-react-magazine.s3-website.ap-northeast-2.amazonaws.com/)
-|![메인화면](https://blog.kakaocdn.net/dn/cAwJ7J/btrsXtUtTNe/9vSbhjjWxZUXmjmBpoorwK/img.gif)|![무한스크롤](https://blog.kakaocdn.net/dn/TMZIK/btrsWLuyIqP/kqet0Dt7gmHypX4oB2nKFk/img.gif)|
+|![무한스크롤](https://blog.kakaocdn.net/dn/TMZIK/btrsWLuyIqP/kqet0Dt7gmHypX4oB2nKFk/img.gif)|![게시글 작성](https://blog.kakaocdn.net/dn/LO5gZ/btrsRYn3iGd/IIMabGgK3ZKOGTgCk5NHaK/img.gif)|
 |:---:|:---:|
