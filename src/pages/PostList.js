@@ -48,15 +48,6 @@ function PostList(props) {
                   border="1px solid rgb(219,219,219)"
                   padding="20px"
                 >
-                  {/* {is_edit ? (
-                    <Text bold font="DOSMyungjo" size="60px" is_center>
-                      게시글 수정
-                    </Text>
-                  ) : (
-                    <Text bold font="DOSMyungjo" size="60px" is_center>
-                      게시글 작성
-                    </Text>
-                  )} */}
                   {p.style === 'r1' ? (
                     <PostR1 {...p} is_me />
                   ) : p.style === 'r2' ? (
@@ -77,7 +68,13 @@ function PostList(props) {
                 border="1px solid rgb(219,219,219)"
                 padding="20px"
               >
-                <Post {...p} />
+                {p.style === 'r1' ? (
+                  <PostR1 {...p} is_me />
+                ) : p.style === 'r2' ? (
+                  <PostR2 {...p} is_me />
+                ) : (
+                  <Post {...p} is_me />
+                )}
               </Grid>
             );
           })}
