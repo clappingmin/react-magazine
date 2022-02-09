@@ -91,9 +91,9 @@ $ yarn add ladash
 ## 결과
 
 [smiley](http://hanghae99-react-magazine.s3-website.ap-northeast-2.amazonaws.com/)
-||||
-|:---:|:---:|:---:|
-|왼쪽정렬|오른쪽정렬|중앙정렬|
+|메인화면|로그인|회원가입|무한스크롤|
+|:---:|:---:|:---:|:---:|
+|https://blog.kakaocdn.net/dn/cAwJ7J/btrsXtUtTNe/9vSbhjjWxZUXmjmBpoorwK/img.gif|https://blog.kakaocdn.net/dn/mRlCI/btrsUddWV4O/9HIkFYWl2dWmYwbmvoRsfk/img.gif|https://blog.kakaocdn.net/dn/IiFaC/btrsSwrCqBk/LeesXl3WzQ6K0KTBEoOpa1/img.gif|https://blog.kakaocdn.net/dn/cO6FY3/btrsVJjsrgT/3JYfOracVNeb8snyEFVIo0/img.gif|
 
 ||||
 |:---:|:---:|:---:|
